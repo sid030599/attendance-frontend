@@ -59,60 +59,72 @@ const Shifts = () => {
 
   return (
     <center>
-    <div >
-      <h2>Shifts</h2>
+      <div>
+        <h2>Shifts</h2>
 
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        {success && <p style={{ color: "green" }}>{success}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <form onSubmit={handleCreateShift}>
-        <input
-          type="number"
-          placeholder="Staff ID"
-          value={staffId}
-          onChange={(e) => setStaffId(e.target.value)}
-          required
-        />
-        <select value={dayOfWeek} onChange={(e) => setDayOfWeek(e.target.value)} required>
-          <option value="">Select Day</option>
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-          <option value="Wednesday">Wednesday</option>
-          <option value="Thursday">Thursday</option>
-          <option value="Friday">Friday</option>
-          <option value="Saturday">Saturday</option>
-          <option value="Sunday">Sunday</option>
-        </select>
-        <input
-          type="time"
-          placeholder="Start Time"
-          value={startTime}
-          onChange={(e) => setStartTime(e.target.value)}
-          required
-        />
-        <input
-          type="time"
-          placeholder="End Time"
-          value={endTime}
-          onChange={(e) => setEndTime(e.target.value)}
-          required
-        />
-        <button type="submit">Add Shift</button>
-      </form>
+        <form onSubmit={handleCreateShift}>
+          <input
+            type="number"
+            placeholder="Staff ID"
+            value={staffId}
+            onChange={(e) => setStaffId(e.target.value)}
+            required
+          />
+          <select
+            value={dayOfWeek}
+            onChange={(e) => setDayOfWeek(e.target.value)}
+            required
+          >
+            <option value="">Select Day</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+          <input
+            type="time"
+            placeholder="Start Time"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            required
+          />
+          <input
+            type="time"
+            placeholder="End Time"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+            required
+          />
+          <button type="submit">Add Shift</button>
+        </form>
 
-      <h3>Existing Shifts</h3>
-      {shifts.length > 0 ? (
-        <ul>
-          {shifts.map((shift) => (
-            <li key={shift.id}>
-              Staff ID: {shift.staff.first_name} - Day: {shift.day_of_week} ({shift.start_time} - {shift.end_time})
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No shifts available.</p>
-      )}
-    </div>
+        <h3>Existing Shifts</h3>
+        {shifts.length > 0 ? (
+          <ul
+            style={{
+              width: "50%",
+              display: "flex",
+              alignItems: "start",
+              flexDirection: "column",
+            }}
+          >
+            {shifts.map((shift) => (
+              <li key={shift.id}>
+                Staff ID: {shift.staff.first_name} - Day: {shift.day_of_week} (
+                {shift.start_time} - {shift.end_time})
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No shifts available.</p>
+        )}
+      </div>
     </center>
   );
 };

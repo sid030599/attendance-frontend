@@ -53,46 +53,57 @@ const WeeklyOffs = () => {
 
   return (
     <center>
-    <div>
-      <h2>Weekly-Offs</h2>
+      <div>
+        <h2>Weekly-Offs</h2>
 
-      {success && <p style={{ color: 'green' }}>{success}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        {success && <p style={{ color: "green" }}>{success}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <form onSubmit={handleCreateWeeklyOff}>
-        <input
-          type="number"
-          placeholder="Staff ID"
-          value={staffId}
-          onChange={(e) => setStaffId(e.target.value)}
-          required
-        />
-        <select value={dayOfWeek} onChange={(e) => setDayOfWeek(e.target.value)} required>
-          <option value="">Select Day</option>
-          <option value="Monday">Monday</option>
-          <option value="Tuesday">Tuesday</option>
-          <option value="Wednesday">Wednesday</option>
-          <option value="Thursday">Thursday</option>
-          <option value="Friday">Friday</option>
-          <option value="Saturday">Saturday</option>
-          <option value="Sunday">Sunday</option>
-        </select>
-        <button type="submit">Add Weekly Off</button>
-      </form>
+        <form onSubmit={handleCreateWeeklyOff}>
+          <input
+            type="number"
+            placeholder="Staff ID"
+            value={staffId}
+            onChange={(e) => setStaffId(e.target.value)}
+            required
+          />
+          <select
+            value={dayOfWeek}
+            onChange={(e) => setDayOfWeek(e.target.value)}
+            required
+          >
+            <option value="">Select Day</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+          <button type="submit">Add Weekly Off</button>
+        </form>
 
-      <h3>Existing Weekly-Offs</h3>
-      {weeklyOffs.length > 0 ? (
-        <ul>
-          {weeklyOffs.map((off) => (
-            <li key={off.id}>
-              Staff ID: {off.staff.first_name} - Day: {off.day_of_week}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No weekly-offs available.</p>
-      )}
-    </div>
+        <h3>Existing Weekly-Offs</h3>
+        {weeklyOffs.length > 0 ? (
+          <ul
+            style={{
+              width: "30%",
+              display: "flex",
+              alignItems: "start",
+              flexDirection: "column",
+            }}
+          >
+            {weeklyOffs.map((off) => (
+              <li key={off.id}>
+                Staff ID: {off.staff.first_name} - Day: {off.day_of_week}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No weekly-offs available.</p>
+        )}
+      </div>
     </center>
   );
 };

@@ -26,6 +26,7 @@ const Attendance = () => {
   };
 
   return (
+    <center>
     <div>
       <h2>Mark Attendance</h2>
       <form onSubmit={handleImageUpload}>
@@ -34,6 +35,7 @@ const Attendance = () => {
       </form>
       {message && <p>{message}</p>}
     </div>
+    </center>
   );
 };
 

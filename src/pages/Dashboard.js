@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../services/axiosInstance'; // Use the custom Axios instance
 
 const Dashboard = () => {
   const [userData, setUserData] = useState(null);
@@ -9,12 +9,7 @@ const Dashboard = () => {
     
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('accessToken');
-        const response = await axios.get('http://127.0.0.1:8000/api/users/', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get('/api/users/'); // Axios instance automatically handles tokens
         setUserData(response.data.user_data);
       } catch (err) {
         console.error('Error fetching user data:', err);
